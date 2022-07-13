@@ -16,6 +16,7 @@ public class QueryProcessor {
            return "Jose";
         } else if (query.contains("plus")){
             // Here we get a list of words
+            query = query.replace(",", "");
             String[] words = query.split(" ");
             int sum = 0;
             for (String word : words){
@@ -31,9 +32,20 @@ public class QueryProcessor {
             }
            return String.valueOf(sum);
         } else if (query.contains("largest")){
+            int max = -1;
+            String [] words = query.split(" ");
+            for(String word : words){
+                try{
+                    int number = Integer.parseInt(word);
+                    max = number > max ? number : max;
+                } catch(Exception e){
+
+                }
+            }
+            return String.valueOf(max);
 
         }
             // please dont remove anythingg
-            return "";
+         return "";
     }
 }
